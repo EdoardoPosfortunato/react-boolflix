@@ -1,38 +1,24 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import axios from 'axios'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './pages/home'
+import MainLayout from './layout/MainLayout'
+import ProvaPagina from './pages/ProvaPagina'
 
 function App() {
 
-  const [titolo, setTitolo] = useState('')
-
-  const gestisciSubmit = (e) => {
-    e.preventDefault();
-    axios
-        .get(`https://api.themoviedb.org/3/search/movie?query=${titolo}&api_key=a137869a6b96dbe44e7dda9ab3f49734`)
-        .then((resp) => {
-          console.log(resp);})
-  }
-
-
-
   return (
     <>
-      <div className='container my-5'>
-        <h1>Inserisci un titolo</h1>
-        <form className='d-flex my-5' onSubmit={gestisciSubmit}>
-          <div className="form-floating">
-            <input
-              className='form-control'
-              type="text"
-              value={titolo}
-              onChange={(e) => { setTitolo(e.target.value) }}
-              id = 'search'
-            />
-          </div>
-          <button className='btn btn-primary ms-3'>cerca</button>
-        </form>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/Prova" element={<ProvaPagina />} />
+          </Route>
+          {/* <Route path="*" element={<Page404 />} /> */}
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
