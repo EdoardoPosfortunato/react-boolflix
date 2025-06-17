@@ -6,11 +6,13 @@ function App() {
 
   const [titolo, setTitolo] = useState('')
 
-
-  // axios
-  //     .get(`https://api.themoviedb.org/3/search/movie?query=harry&api_key=a137869a6b96dbe44e7dda9ab3f49734`)
-  //     .then((resp) => {
-  //       console.log(resp);})
+  const gestisciSubmit = (e) => {
+    e.preventDefault();
+    axios
+        .get(`https://api.themoviedb.org/3/search/movie?query=${titolo}&api_key=a137869a6b96dbe44e7dda9ab3f49734`)
+        .then((resp) => {
+          console.log(resp);})
+  }
 
 
 
@@ -18,13 +20,11 @@ function App() {
     <>
       <div className='container my-5'>
         <h1>Inserisci un titolo</h1>
-        <form className='d-flex'>
+        <form className='d-flex my-5' onSubmit={gestisciSubmit}>
           <div className="form-floating">
-            <label htmlFor="search">Inserisci un titolo</label>
             <input
               className='form-control'
               type="text"
-              placeholder='...inserisci un titolo qui'
               value={titolo}
               onChange={(e) => { setTitolo(e.target.value) }}
               id = 'search'
