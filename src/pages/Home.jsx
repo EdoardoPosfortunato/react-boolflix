@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-
+import languagesWithFlags from "../data/data.js"
+import MovieCard from '../components/MovieCrad.jsx'
 
 const Home = () => {
 
-    const [titolo, setTitolo] = useState('')
+    const [titolo, setTitolo] = useState('dragon trainer')
     const [tipe, setTipe] = useState('movie')
     const [list, setList] = useState()
     const [showList, setShowList] = useState(false)
@@ -52,17 +53,12 @@ const Home = () => {
             {/* LISTA */}
 
             {showList &&
-                <div className='d-flex flex-wrap justify-content-between'>
+                <div className='d-flex justify-content-start overflow-auto'>
                     {list.map((curFilm, index) => (
-                        <div className="card my-3 col-5" key={index}>
-                            {/* <img src="..." className="card-img-top" alt="..."/> */}
-                            <div className="card-body">
-                                <h5 className="card-title">{curFilm.title}</h5>
-                                <p className="card-text">Titolo originale: {curFilm.original_title}</p>
-                                <p className="card-text">Lingua: {curFilm.original_language}</p>
-                                <p className="card-text">Voto: {curFilm.vote_average}</p>
-                                {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
-                            </div>
+                        <div className="card my-3 col-4 gap-1 mx-3" key={index}>
+                        <MovieCard 
+                        curItem = { curFilm } 
+                        />
                         </div>
                     ))
                     }
