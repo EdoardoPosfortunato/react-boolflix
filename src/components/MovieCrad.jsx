@@ -8,8 +8,6 @@ const MovieCard = ({ curItem }) => {
     //     ? `https://image.tmdb.org/t/p/w342/${curItem.poster_path}`
     //     : NoImageFallback;
 
-    const rightFlag = true
-
     const vote = (parseInt(curItem.vote_average / 2))
 
     let starsHtml = '';
@@ -20,7 +18,7 @@ const MovieCard = ({ curItem }) => {
         starsHtml += '☆';
     }
 
-    const [isHovered, setIsHovered] = useState(true);
+    const [isHovered, setIsHovered] = useState(false);
 
     const handleMouseEnter = () => {
         setIsHovered(true);
@@ -47,12 +45,12 @@ const MovieCard = ({ curItem }) => {
                                     <>
                                         <img
                                             className='ms-3'
-                                            src={`../public/flags/icons8-${curFlag.flag}-emoji-48.png" alt=""` }/>
-                                    </>   
+                                            src={`../public/flags/icons8-${curFlag.flag}-emoji-48.png" alt=""`} />
+                                    </>
                                     :
-                                        <>
+                                    <>
                                         {curItem.original_language}
-                                        </>
+                                    </>
                             ))}
                         </p>
                         <p className="card-text">Voto: {starsHtml}</p>
