@@ -1,5 +1,4 @@
 import { useState } from "react";
-import languagesWithFlags from "../data/data";
 
 
 const MovieCard = ({ curItem }) => {

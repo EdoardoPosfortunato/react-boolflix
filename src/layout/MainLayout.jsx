@@ -1,10 +1,11 @@
 import { Outlet } from "react-router-dom";
+import NavbarHeader from "../components/AppHeader";
 
 const MainLayout = () => {
     return (
         <>
             <div className="container">
-                <h1>Header</h1>
+                <NavbarHeader />
                 <Outlet />
                 <h1>Footer</h1>
             </div>
