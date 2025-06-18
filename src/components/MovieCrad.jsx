@@ -39,19 +39,12 @@ const MovieCard = ({ curItem }) => {
                     ? <>
                         <h5 className="card-title my-2 mb-4">{curItem.title}</h5>
                         <p className="card-text">Overview: {curItem.overview}</p>
-                        <p className="card-text">Lingua:
-                            {languagesWithFlags.map((curFlag) => (
-                                curFlag.lang == curItem.original_language ?
-                                    <>
+                        <p className="card-text">Origine:
+
                                         <img
                                             className='ms-3'
-                                            src={`../public/flags/icons8-${curFlag.flag}-emoji-48.png" alt=""`} />
-                                    </>
-                                    :
-                                    <>
-                                        {curItem.original_language}
-                                    </>
-                            ))}
+                                            src={`../public/flags/icons8-${curItem.original_language}-emoji-48.png`} alt="" />
+
                         </p>
                         <p className="card-text">Voto: {starsHtml}</p>
                     </>
